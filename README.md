@@ -1,0 +1,1 @@
+commit 1, start av projektet med api setup men inte helt klar, båda sammarbetade
