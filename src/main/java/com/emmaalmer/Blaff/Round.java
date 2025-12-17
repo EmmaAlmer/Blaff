@@ -1,5 +1,5 @@
 
-package com.emmaalmer.Blaff.entity;
+package com.emmaalmer.Blaff;
 
 
 public record Round(

@@ -1,6 +1,4 @@
-package com.emmaalmer.Blaff.entity;
-
-import com.emmaalmer.Blaff.Role;
+package com.emmaalmer.Blaff;
 
 public record Player(
 

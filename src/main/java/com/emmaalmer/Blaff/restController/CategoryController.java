@@ -4,10 +4,10 @@ import com.emmaalmer.Blaff.repository.CategoryRepository;
 import com.emmaalmer.Blaff.repository.WordRepository;
 import com.emmaalmer.Blaff.entity.Category;
 import com.emmaalmer.Blaff.entity.Word;
+import com.emmaalmer.Blaff.service.WordService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Random;
@@ -16,12 +16,12 @@ import java.util.Random;
 public class CategoryController {
 
     private final CategoryRepository categoryRepository;
-    private final WordRepository  wordRepository;
+    private final WordService wordService;
 
     @Autowired
-    public CategoryController(CategoryRepository categoryRepository, WordRepository wordRepository){
+    public CategoryController(CategoryRepository categoryRepository, WordService wordService){
         this.categoryRepository = categoryRepository;
-        this.wordRepository = wordRepository;
+        this.wordService = wordService;
     }
 
     @GetMapping("/categories")
@@ -32,15 +32,12 @@ public class CategoryController {
     @GetMapping("/categories/{category}/randomWord")
     public Word getRandomWord(@PathVariable String category) {
 
-        List <Word> wordList = wordRepository.findByCategoryName(category);
+        return wordService.getRandomWord(category);
+    }
 
-        if (wordList.isEmpty()) {
-            throw new RuntimeException("The categpry: " + category + ",  has no words");
-        }
-
-        Random random = new Random();
-        Word randomWord = wordList.get(random.nextInt(wordList.size()));
-
-        return randomWord;
+    @PostMapping("/category/create")
+    public ResponseEntity<String> createCategory(@RequestBody Category category){
+        categoryRepository.save(category);
+        return ResponseEntity.status(201).body(category.getName());
     }
 }

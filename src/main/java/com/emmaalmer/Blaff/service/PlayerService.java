@@ -1,12 +1,14 @@
 package com.emmaalmer.Blaff.service;
 
-import com.emmaalmer.Blaff.entity.Player;
+import com.emmaalmer.Blaff.Player;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Service
 public class PlayerService {
 
     private final Map<Long, Player> players = new HashMap<>();

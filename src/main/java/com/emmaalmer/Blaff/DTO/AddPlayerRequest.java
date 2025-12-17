@@ -1,4 +1,4 @@
-package com.emmaalmer.Blaff;
+package com.emmaalmer.Blaff.DTO;
 
 public record AddPlayerRequest(String name) {
 }
