@@ -5,14 +5,47 @@
     <meta charset="UTF-8">
     <title>Blaff</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{style.css}">
 </head>
 <body>
 
 <h1>Blaff</h1>
 
 <form action="/players/view" method="get">
+
+    <p> Welcome to Blaff! The imposter game where you get to manipulate your
+    friends and show them who the real blaffer is. </p>
+
+    <div class="toggle-container" onclick="toggleText()">
+        <span class="arrow">&#9654;</span>
+        <span>Klicka här för instruktioner</span>
+    </div>
+
+    <div class="hidden-text" id="instructions">
+        <p>Här är dina instruktioner som är gömda tills du klickar på pilen!</p>
+    </div>
+
     <button type="submit"> Begin </button>
 </form>
+
+<script>
+    function toggleText() {
+
+      const text = document.getElementById('instructions');
+      const arrow = document.querySelector('.arrow');
+
+      if (text.style.display === 'block') {
+
+        text.style.display = 'none';
+        arrow.classList.remove('down');
+
+      } else {
+
+        text.style.display = 'block';
+        arrow.classList.add('down');
+      }
+    }
+</script>
 
 </body>
 </html>

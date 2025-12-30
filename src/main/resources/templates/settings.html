@@ -9,24 +9,65 @@
 
 <h1> Choose categories </h1>
 
-<form>
   <div th:each="category : ${categories}">
-    <input type="checkbox" th:name="selectedCategories" th:value="${category.getName()}" />
+
+    <input type="checkbox" class="categoryCheckbox" th:value="${category.getName()}"/>
+
     <label th:text="${category.getName()}"></label><br>
+
   </div>
-</form>
 
 <h2> Choose amount of imposters </h2>
+    <div>
 
-<div class="slidecontainer">
-  <input type="range" min="1" max="10" value="1" class="slider" id="myRange">
-  <p> 1 </p>
-</div>
+    <input type="range" min="1" th:max="${players.size() - 1}" value="1" id="imposterSlider">
+
+    <p> Max imposters: <span id="sliderValue">1</span> </p>
+
+    </div>
 
 <!-- starta spel -->
-<form>
-  <button type="submit">Start game </button>
-</form>
+
+  <button onclick="setSelectedCategories()" >Start game </button>
+
+
+<script>
+
+    const slider = document.getElementById("imposterSlider");
+    const output = document.getElementById("sliderValue");
+
+    output.innerText = slider.value;
+    slider.oninput = () => output.innerText = slider.value;
+
+    function setSelectedCategories() {
+
+        const selectedCategories = Array.from(
+            document.querySelectorAll(".categoryCheckbox:checked")
+        ).map(cb => cb.value);
+
+        if (selectedCategories.length === 0) {
+            alert("Välj minst en kategori");
+            return;
+        }
+
+        const settings = {
+            minImposters: 1,
+            maxImposters: Number(slider.value),
+            categories: selectedCategories
+        };
+
+        fetch("/gameloop", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(settings)
+        })
+        .then(() => {
+            window.location.href = "/gameloop/game";
+        });
+    }
+
+</script>
 
 </body>
+
 </html>

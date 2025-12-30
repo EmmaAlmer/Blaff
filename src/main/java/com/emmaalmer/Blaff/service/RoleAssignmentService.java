@@ -37,7 +37,7 @@ public class RoleAssignmentService {
                 + rand.nextInt(settings.maxImposters() - settings.minImposters() + 1);
 
         //hämtar slumpat ord
-        Word chosenWord = wordService.getRandomWord(settings.category());
+        Word chosenWord = wordService.getRandomWord(settings.categories());
 
         //tilldelar roller
         for (int i = 0; i < players.size(); i++) {
@@ -53,6 +53,7 @@ public class RoleAssignmentService {
                 );
             }
         }
+
 
         //returnera info om rundan (inte roller!)
         return new Round(imposterCount, chosenWord.getName());

@@ -1,0 +1,26 @@
+.toggle-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.arrow {
+  display: inline-block;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* När pilen pekar ner */
+.arrow.down {
+  transform: rotate(90deg);
+}
+
+.hidden-text {
+  display: block;
+  color: red;
+  margin-top: 10px;
+  padding-left: 20px;
+  border-left: 2px solid #ccc;
+  color: #333;
+}

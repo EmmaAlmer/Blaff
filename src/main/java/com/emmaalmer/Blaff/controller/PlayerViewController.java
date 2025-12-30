@@ -21,6 +21,7 @@ public class PlayerViewController {
     @GetMapping("/view")
     public String showPlayers(Model model) {
         model.addAttribute("players", playerService.getAllPlayers());
+
         return "players";
     }
 
