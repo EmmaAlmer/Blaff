@@ -9,64 +9,29 @@
 
 <h1> Choose categories </h1>
 
-  <div th:each="category : ${categories}">
+<form action="/gameloop" method="post">
 
-    <input type="checkbox" class="categoryCheckbox" th:value="${category.getName()}"/>
-
-    <label th:text="${category.getName()}"></label><br>
-
-  </div>
-
-<h2> Choose amount of imposters </h2>
-    <div>
-
-    <input type="range" min="1" th:max="${players.size() - 1}" value="1" id="imposterSlider">
-
-    <p> Max imposters: <span id="sliderValue">1</span> </p>
-
+    <div th:each="category : ${categories}">
+        <input type="checkbox"
+               name="categories"
+               th:value="${category.name}">
+        <label th:text="${category.name}"></label><br>
     </div>
 
-<!-- starta spel -->
+    <input type="hidden" name="minImposters" value="1">
 
-  <button onclick="setSelectedCategories()" >Start game </button>
+    <input type="range"
+           name="maxImposters"
+           min="1"
+           th:max="${players.size() - 1}"
+           value="1"
+           id="imposterSlider">
 
+    <p>Max imposters: <span id="sliderValue">1</span></p>
 
-<script>
+    <button type="submit">Start game</button>
+</form>
 
-    const slider = document.getElementById("imposterSlider");
-    const output = document.getElementById("sliderValue");
-
-    output.innerText = slider.value;
-    slider.oninput = () => output.innerText = slider.value;
-
-    function setSelectedCategories() {
-
-        const selectedCategories = Array.from(
-            document.querySelectorAll(".categoryCheckbox:checked")
-        ).map(cb => cb.value);
-
-        if (selectedCategories.length === 0) {
-            alert("Välj minst en kategori");
-            return;
-        }
-
-        const settings = {
-            minImposters: 1,
-            maxImposters: Number(slider.value),
-            categories: selectedCategories
-        };
-
-        fetch("/gameloop", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(settings)
-        })
-        .then(() => {
-            window.location.href = "/gameloop/game";
-        });
-    }
-
-</script>
 
 </body>
 

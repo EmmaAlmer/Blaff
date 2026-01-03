@@ -3,9 +3,7 @@ package com.emmaalmer.Blaff.restController;
 import com.emmaalmer.Blaff.DTO.AddPlayerRequest;
 import com.emmaalmer.Blaff.GameSettings;
 import com.emmaalmer.Blaff.Player;
-import com.emmaalmer.Blaff.Round;
 import com.emmaalmer.Blaff.service.PlayerService;
-import com.emmaalmer.Blaff.service.RoleAssignmentService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,11 +13,10 @@ import java.util.List;
 public class PlayerController {
 
     private final PlayerService playerService;
-    private final RoleAssignmentService roleAssignmentService;
 
-    public PlayerController(PlayerService playerService, RoleAssignmentService roleAssignmentService) {
+    public PlayerController(PlayerService playerService) {
         this.playerService = playerService;
-        this.roleAssignmentService = roleAssignmentService;
+
     }
 
     @PostMapping("/add")
@@ -37,12 +34,12 @@ public class PlayerController {
         playerService.removePlayer(id);
     }
 
-    @PostMapping("/startRound")
+    /*@PostMapping("/startRound")
     public Round startRound(@RequestBody GameSettings settings) {
 
         //behåller spelare, rensar gamla roller
         playerService.clearRoles();
 
         return roleAssignmentService.assignRoles(settings);
-    }
+    }*/
 }

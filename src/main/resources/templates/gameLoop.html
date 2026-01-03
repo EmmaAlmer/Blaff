@@ -7,17 +7,83 @@
 </head>
 <body>
 
-<h1> Click the card to reviel ur role </h1>
-
-<--! när du klickar på knappen ska  den bytas till en image som det står ett ord på eller imposter -->
-<button onclick="" > Reviel </button>
-
-<--! namnet på random genenererad spelare-->
-<--! när spelaren klickat på reviel knappen så dyker detupp en till knapp för nästa spelare-->
+<h1> Click the card to reveal ur role </h1>
 
 <div>
 
+<!-- när du klickar på knappen ska  den bytas till en image som det står ett ord på eller imposter -->
+
+<!-- namnet på random genenererad spelare-->
+
+<!-- när spelaren klickat på reveal knappen så dyker det upp en till knapp för nästa spelare-->
+
+    <div id="playerContainer">
+
+        <h2 id="playerName"></h2>
+
+        <div id="card">
+            <button id="revealBtn" onclick="reveal()">Reveal</button>
+        </div>
+
+        <p id="playerInfo" style="display:none;"></p>
+
+        <button id="nextBtn" onclick="nextPlayer()" style="display:none;">
+            Next player
+        </button>
+
+    </div>
+
 </div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    const players = [[${players}]];
+    /*]]>*/
+</script>
+
+<script>
+    let index = 0;
+
+    function showPlayer() {
+        const player = players[index];
+
+        document.getElementById("playerName").innerText =
+            "Player: " + player.name;
+
+        document.getElementById("playerInfo").style.display = "none";
+        document.getElementById("nextBtn").style.display = "none";
+        document.getElementById("revealBtn").style.display = "inline-block";
+    }
+
+    function reveal() {
+        const player = players[index];
+        const info = player.role === "IMPOSTER"
+            ? "You are the Imposter"
+            : "Word: " + player.word;
+
+        document.getElementById("playerInfo").innerText = info;
+        document.getElementById("playerInfo").style.display = "block";
+
+        document.getElementById("revealBtn").style.display = "none";
+        document.getElementById("nextBtn").style.display = "inline-block";
+    }
+
+    function nextPlayer() {
+        index++;
+
+        if (index >= players.length) {
+            document.getElementById("playerContainer").innerHTML =
+                "<h2>All players have seen their roles</h2>";
+            return;
+        }
+
+        showPlayer();
+    }
+
+    // startläge
+    showPlayer();
+</script>
+
 
 </body>
 </html>

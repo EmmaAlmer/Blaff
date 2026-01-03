@@ -5,3 +5,5 @@ commit 2, börjat med klasser för spelare kategorier ord och roller
 commit 3, arbetat tillsammans med att göra klart backend där kategorier och ord sparas, börjat med html kod och vyer 
 
 commit 4, har inte blivit så mycket  arbete på grund av jul och sjukdom, men vi fixade klart all logik i html förutom den sista gameloop delen
+
+commit 5, börjat med logik för gameloop  men blev  strul med att hämta vissa värden som ska åtgärdas, vi har som vanligt jobbat tillsammans

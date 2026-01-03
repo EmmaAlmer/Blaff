@@ -14,11 +14,11 @@ public class PlayerService {
     private final Map<Long, Player> players = new HashMap<>();
     private long idCounter = 1;
 
-    //lägger tillspelare uta att spara dess värden förutom namn
+    //lägger tillspelare utan att spara dess värden förutom namn
     public Player addPlayer(String name) {
 
         Player p = new Player(idCounter++, name, null, null);
-        players.put(p.id(), p);
+        players.put(p.getId(), p);
         return p;
     }
 
@@ -30,18 +30,18 @@ public class PlayerService {
         players.remove(id);
     }
 
-    //rensar rollerna för spelarna  men behåller spelarna
+    /*rensar rollerna för spelarna  men behåller spelarna
     public void clearRoles() {
         for (var entry : players.entrySet()) {
             Player p = entry.getValue();
             entry.setValue(new Player(p.id(), p.name(), null, null));
         }
-    }
+    }*/
 
-    //spelaren uppdateras vid ex rollsättingar
+    /*spelaren uppdateras vid ex rollsättingar
     public void updatePlayer(Player updatedPlayer) {
         players.put(updatedPlayer.id(), updatedPlayer);
-    }
+    }*/
 
     // Nollställ spelet helt (alla spelare tas bort)
     public void resetGame() {
