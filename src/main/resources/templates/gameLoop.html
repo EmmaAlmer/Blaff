@@ -37,7 +37,7 @@
 
 <script th:inline="javascript">
     /*<![CDATA[*/
-    const players = [[${players}]];
+    const players = /*[[${players}]]*/ [];
     /*]]>*/
 </script>
 
@@ -45,6 +45,7 @@
     let index = 0;
 
     function showPlayer() {
+
         const player = players[index];
 
         document.getElementById("playerName").innerText =

@@ -31,7 +31,13 @@
 
     <button type="submit">Start game</button>
 </form>
+<script>
+    const slider = document.getElementById("imposterSlider");
+    const output = document.getElementById("sliderValue");
 
+    output.innerText = slider.value;
+    slider.oninput = () => output.innerText = slider.value;
+</script>
 
 </body>
 

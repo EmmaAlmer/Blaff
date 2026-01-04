@@ -33,7 +33,7 @@ public class GameloopViewController {
         this.wordService = wordService;
     }
 
-    //glöm   inte  att  testa min imposters ord och kategori och uppdatera texten i slidern
+    //glöm inte  att  testa min imposters ord och kategori och uppdatera texten i slidern
     @PostMapping
     public String startGameloop(GameSettings settings, Model model) {
 
@@ -71,9 +71,6 @@ public class GameloopViewController {
         }
 
         model.addAttribute("players", dtoPlayers);
-        System.out.println(dtoPlayers.size());
-
-        System.out.println("Max imposters: " + settings.maxImposters());
         return "gameloop";
     }
 
