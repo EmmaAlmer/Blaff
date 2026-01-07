@@ -5,6 +5,8 @@ import com.emmaalmer.Blaff.GameSettings;
 import com.emmaalmer.Blaff.Player;
 import com.emmaalmer.Blaff.Role;
 import com.emmaalmer.Blaff.entity.Word;
+import com.emmaalmer.Blaff.service.CategoryService;
+import com.emmaalmer.Blaff.service.GameSettingsService;
 import com.emmaalmer.Blaff.service.PlayerService;
 import com.emmaalmer.Blaff.service.WordService;
 import org.springframework.stereotype.Controller;
@@ -26,17 +28,35 @@ public class GameloopViewController {
 
     private final PlayerService playerService;
     private final WordService wordService;
+    private final GameSettingsService gameSettingsService;
+    private final CategoryService categoryService;
     private final Random random = new Random();
 
-    public GameloopViewController(PlayerService playerService, WordService wordService) {
+    public GameloopViewController(PlayerService playerService, WordService wordService, GameSettingsService gameSettingsService, CategoryService categoryService) {
         this.playerService = playerService;
         this.wordService = wordService;
+        this.gameSettingsService = gameSettingsService;
+        this.categoryService = categoryService;
+    }
+
+    @PostMapping
+    public String startGameWithSettings(GameSettings settings){
+
+        if(settings.categories() == null){
+
+            List<String> categories = new ArrayList<>();
+            categoryService.getAllCategories().stream().forEach(category -> categories.add(category.getName()));
+            settings = new GameSettings(settings.minImposters(), settings.maxImposters(), categories);
+        }
+        gameSettingsService.setSettings(settings);
+        return "redirect:/gameloop";
     }
 
     //glöm inte  att  testa min imposters ord och kategori och uppdatera texten i slidern
-    @PostMapping
-    public String startGameloop(GameSettings settings, Model model) {
+    @GetMapping
+    public String startGameloop(Model model) {
 
+        GameSettings settings = gameSettingsService.getSettings();
         List<Player> players = playerService.getAllPlayers();
 
         int imposterAmount = random.nextInt(

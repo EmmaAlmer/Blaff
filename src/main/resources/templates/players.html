@@ -3,22 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
 
 <h1>Players</h1>
 
 <!-- Lista spelare -->
+
 <ul>
-  <li th:each="player : ${players}">
+  <li class="delete-button" th:each="player : ${players}">
+
     <span th:text="${player.name}"></span>
+
+      <form th:action="@{/players/remove(id=${player.getId()})}" method="post">
+
+          <button type="submit"> Delete player </button>
+
+      </form>
+
   </li>
 </ul>
 
 <!-- Lägg till spelare -->
 <h2>Add Player</h2>
-
 
 <form action="/players/add" method="post">
 
@@ -26,6 +35,10 @@
   <button type="submit">Add players</button>
 
 </form>
+
+<div th:if="${errorMessage}">
+    <p th:text="${errorMessage}"></p>
+</div>
 
 <form action="/settings" method="get">
 

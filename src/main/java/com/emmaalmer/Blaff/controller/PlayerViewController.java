@@ -3,10 +3,7 @@ package com.emmaalmer.Blaff.controller;
 import com.emmaalmer.Blaff.service.PlayerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/players")
@@ -28,6 +25,15 @@ public class PlayerViewController {
     @PostMapping("/add")
     public String addPlayers(@RequestParam String name) {
         playerService.addPlayer(name);
+
+        return "redirect:/players/view";
+    }
+
+    //kanske ska vara delete men gick ej
+    @PostMapping("/remove")
+    public String removePlayers(@RequestParam Long id) {
+
+        playerService.removePlayer(id);
 
         return "redirect:/players/view";
     }

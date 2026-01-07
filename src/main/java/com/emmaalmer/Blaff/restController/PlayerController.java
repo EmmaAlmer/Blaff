@@ -34,12 +34,4 @@ public class PlayerController {
         playerService.removePlayer(id);
     }
 
-    /*@PostMapping("/startRound")
-    public Round startRound(@RequestBody GameSettings settings) {
-
-        //behåller spelare, rensar gamla roller
-        playerService.clearRoles();
-
-        return roleAssignmentService.assignRoles(settings);
-    }*/
 }

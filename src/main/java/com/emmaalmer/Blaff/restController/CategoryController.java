@@ -29,12 +29,6 @@ public class CategoryController {
         return categoryRepository.findAll();
     }
 
-    /*@GetMapping("/categories/{category}/randomWord")
-    public Word getRandomWord(@PathVariable String category) {
-
-        return wordService.getRandomWord(category);
-    }
-    */
     @PostMapping("/category/create")
     public ResponseEntity<String> createCategory(@RequestBody Category category){
         categoryRepository.save(category);

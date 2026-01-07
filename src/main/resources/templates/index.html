@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Blaff</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{style.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
 
@@ -14,15 +14,18 @@
 <form action="/players/view" method="get">
 
     <p> Welcome to Blaff! The imposter game where you get to manipulate your
-    friends and show them who the real blaffer is. </p>
+    friends and show them who the real blaffer is! </p>
 
     <div class="toggle-container" onclick="toggleText()">
         <span class="arrow">&#9654;</span>
-        <span>Klicka här för instruktioner</span>
+        <span>Click the arrow for further instructions</span>
     </div>
 
-    <div class="hidden-text" id="instructions">
-        <p>Här är dina instruktioner som är gömda tills du klickar på pilen!</p>
+    <div class="hidden-text" id="instructions" >
+        <p> The goal of the game is to prove ur loyalty to your friends. You will get assigned
+            either civilian or the imposter. The goal is to blend in and answer questions or say
+            relevant words related to the assigned word to keep your friends from voting you out as
+            the imposter. If that happens.. GAME OVER FOR YOU. Good luck! </p>
     </div>
 
     <button type="submit"> Begin </button>

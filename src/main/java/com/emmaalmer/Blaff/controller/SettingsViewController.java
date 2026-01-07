@@ -25,7 +25,9 @@ public class SettingsViewController {
     public String showCategories(Model model) {
 
         if(playerService.getAllPlayers().size() < 2){
-            return "redirect:/players/view";
+            model.addAttribute("errorMessage", "You must be more than one player to continue");
+            model.addAttribute("players", playerService.getAllPlayers());
+            return "players";
         }
         model.addAttribute("categories", categoryService.getAllCategories());
         model.addAttribute("players", playerService.getAllPlayers());

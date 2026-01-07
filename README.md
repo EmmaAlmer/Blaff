@@ -9,3 +9,6 @@ commit 4, har inte blivit så mycket  arbete på grund av jul och sjukdom, men v
 commit 5, börjat med logik för gameloop  men blev  strul med att hämta vissa värden som ska åtgärdas, vi har som vanligt jobbat tillsammans
 
 commit 6, gameloop helt klar ska bara lägga till spela om knapp samt css och fixa med moln, portfolio osv. sammarbetat som vannligt
+
+commit 7, sista pushen inför presentation, all logik klar samt tester. Det vi inte hann med var css och fixa med webb publicering som kan göras senare om det behövs,
+samarbetat som vanligt 
