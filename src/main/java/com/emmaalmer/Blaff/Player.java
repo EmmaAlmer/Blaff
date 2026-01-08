@@ -5,7 +5,6 @@ public class Player {
     Long id;
     String name;
     Role role;
-    //ordet civilian ser, imposters ser ordet imposter
     String word;
 
     public Player(Long id, String name, Role role, String word) {

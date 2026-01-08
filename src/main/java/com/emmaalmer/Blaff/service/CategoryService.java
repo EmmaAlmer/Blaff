@@ -3,7 +3,6 @@ package com.emmaalmer.Blaff.service;
 import com.emmaalmer.Blaff.entity.Category;
 import com.emmaalmer.Blaff.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 

@@ -30,9 +30,4 @@ public class PlayerService {
         players.remove(id);
     }
 
-    // Nollställ spelet helt (alla spelare tas bort)
-    public void resetGame() {
-        players.clear();
-        idCounter = 1;
-    }
 }

@@ -3,7 +3,6 @@ package com.emmaalmer.Blaff.controller;
 import com.emmaalmer.Blaff.DTO.GamePlayerDTO;
 import com.emmaalmer.Blaff.GameSettings;
 import com.emmaalmer.Blaff.Player;
-import com.emmaalmer.Blaff.Role;
 import com.emmaalmer.Blaff.entity.Word;
 import com.emmaalmer.Blaff.service.CategoryService;
 import com.emmaalmer.Blaff.service.GameSettingsService;
@@ -13,9 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -52,7 +49,6 @@ public class GameloopViewController {
         return "redirect:/gameloop";
     }
 
-    //glöm inte  att  testa min imposters ord och kategori och uppdatera texten i slidern
     @GetMapping
     public String startGameloop(Model model) {
 
@@ -93,15 +89,6 @@ public class GameloopViewController {
         model.addAttribute("players", dtoPlayers);
         return "gameloop";
     }
-
-
-    /*@PostMapping
-    public String startGameloop(@RequestBody GameSettings settings, RedirectAttributes redirectAttributes) {
-
-
-        redirectAttributes.addFlashAttribute("settings", settings);
-        return "redirect:/gameloop/game";
-    }*/
 
     @GetMapping("/game")
     public String gameLoop() {

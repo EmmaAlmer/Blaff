@@ -19,7 +19,7 @@
 
       <form th:action="@{/players/remove(id=${player.getId()})}" method="post">
 
-          <button type="submit"> Delete player </button>
+          <button class="deleteBtn" type="submit"> Delete player </button>
 
       </form>
 
@@ -31,7 +31,7 @@
 
 <form action="/players/add" method="post">
 
-  <input type="text" name="name" placeholder="Player name" required>
+  <input class="player-input" type="text" name="name" placeholder="Player name" required>
   <button type="submit">Add players</button>
 
 </form>

@@ -12,3 +12,6 @@ commit 6, gameloop helt klar ska bara lägga till spela om knapp samt css och fi
 
 commit 7, sista pushen inför presentation, all logik klar samt tester. Det vi inte hann med var css och fixa med webb publicering som kan göras senare om det behövs,
 samarbetat som vanligt 
+
+commit 8, kanske sista pushen inför inlämninng, lagt till massa fin css, lagt till bättre beskrivning i slut vyn efter feedbacken
+vi fick från presentationen!

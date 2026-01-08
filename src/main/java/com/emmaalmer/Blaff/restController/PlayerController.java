@@ -1,7 +1,6 @@
 package com.emmaalmer.Blaff.restController;
 
 import com.emmaalmer.Blaff.DTO.AddPlayerRequest;
-import com.emmaalmer.Blaff.GameSettings;
 import com.emmaalmer.Blaff.Player;
 import com.emmaalmer.Blaff.service.PlayerService;
 import org.springframework.web.bind.annotation.*;

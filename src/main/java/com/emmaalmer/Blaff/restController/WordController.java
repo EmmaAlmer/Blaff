@@ -1,6 +1,5 @@
 package com.emmaalmer.Blaff.restController;
 
-import com.emmaalmer.Blaff.entity.Category;
 import com.emmaalmer.Blaff.entity.Word;
 import com.emmaalmer.Blaff.repository.WordRepository;
 import org.springframework.beans.factory.annotation.Autowired;

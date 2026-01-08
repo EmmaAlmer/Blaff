@@ -13,15 +13,17 @@
 <form action="/gameloop" method="post">
 
     <div th:each="category : ${categories}">
-        <input type="checkbox"
+
+        <input class="category-checkbox" type="checkbox"
                name="categories"
                th:value="${category.name}">
+
         <label th:text="${category.name}"></label><br>
     </div>
 
     <input type="hidden" name="minImposters" value="1">
 
-    <input type="range"
+    <input class="imposter-slide" type="range"
            name="maxImposters"
            min="1"
            th:max="${players.size() - 1}"

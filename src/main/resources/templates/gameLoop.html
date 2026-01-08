@@ -32,6 +32,8 @@
 
     </div>
 
+    <h3 id="vote-text"></h3>
+
     <!-- nästa runda eller avsluta/gå tillbaka till index -->
     <div class="hidden-text" id="after-game">
         <form action="/gameloop" method="get">
@@ -90,6 +92,10 @@
         if (index >= players.length) {
             document.getElementById("playerContainer").innerHTML =
                 "<h2>All players have seen their roles, Let the game begin!</h2>";
+
+            document.getElementById("vote-text").innerHTML =
+                "<h3>Ask eachother questions or say relevant words connected to the chosen word. "+
+                "When you are done, vote for the suspected imposter/imposters and crown your winner! </h3>";
 
             document.getElementById("after-game").style.display = "block";
             document.getElementById("reveal-role-text").style.display = "none";
